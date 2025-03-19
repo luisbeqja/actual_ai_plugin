@@ -33,7 +33,6 @@ export default defineConfig({
     federation({
       name: 'plugin-dummy',
       manifest: true,
-      getPublicPath: 'plugin/data/dummy',
       exposes: {
         '.': './src/index.tsx',
       },
