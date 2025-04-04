@@ -5,9 +5,9 @@ __metadata:
   version: 8
   cacheKey: 10c0
 
-"@actual-app/plugins-core@link:/home/leandro-menezes/opensource/actual-repos/tmp3/actual/packages/plugins-core::locator=plugin-dummy%40workspace%3A.":
+"@actual-app/plugins-core@link:/home/leandro-menezes/opensource/actual-repos/frontend-plugins/packages/plugins-core::locator=plugin-dummy%40workspace%3A.":
   version: 0.0.0-use.local
-  resolution: "@actual-app/plugins-core@link:/home/leandro-menezes/opensource/actual-repos/tmp3/actual/packages/plugins-core::locator=plugin-dummy%40workspace%3A."
+  resolution: "@actual-app/plugins-core@link:/home/leandro-menezes/opensource/actual-repos/frontend-plugins/packages/plugins-core::locator=plugin-dummy%40workspace%3A."
   languageName: node
   linkType: soft
 
@@ -1395,7 +1395,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "plugin-dummy@workspace:."
   dependencies:
-    "@actual-app/plugins-core": "link:/home/leandro-menezes/opensource/actual-repos/tmp3/actual/packages/plugins-core"
+    "@actual-app/plugins-core": "link:/home/leandro-menezes/opensource/actual-repos/frontend-plugins/packages/plugins-core"
     "@module-federation/vite": "npm:^1.2.6"
     "@types/react": "npm:^18.2.0"
     archiver: "npm:^7.0.1"

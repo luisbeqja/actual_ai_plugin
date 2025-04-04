@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   ActualPlugin,
   ActualPluginEntry,
@@ -21,10 +21,22 @@ const pluginEntry: ActualPluginEntry = () => {
       context.registerSidebarMenu(
         <Button
           onPress={() => {
-            context.actions.navigate("/custom/test");
+            context.navigate("/custom/test");
           }}
           variant="primary"
-        >Click me</Button>
+        >
+          Click me
+        </Button>
+      );
+      context.registerSidebarMenu(
+        <Button
+          onPress={() => {
+            context.pushModal(<ModalHelloWorld text="my test" />);
+          }}
+          variant="primary"
+        >
+          Modal?
+        </Button>
       );
       console.log("Dummy activated");
     },
@@ -33,3 +45,25 @@ const pluginEntry: ActualPluginEntry = () => {
   return initializePlugin(plugin);
 };
 export default pluginEntry;
+
+type ModalHelloWorldProps = {
+  text: string;
+};
+
+export function ModalHelloWorld({ text }: ModalHelloWorldProps) {
+  const [counter, setCounter] = useState(0);
+  return (
+    <View>
+      {text}
+      <Button
+        variant="normal"
+        onPress={() => {
+          setCounter((prev) => prev + 1);
+        }}
+      >
+        Click here
+      </Button>
+      {counter}
+    </View>
+  );
+}

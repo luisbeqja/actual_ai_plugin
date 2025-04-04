@@ -9,7 +9,7 @@
     "build": "vite build"
   },
   "devDependencies": {
-    "@actual-app/plugins-core": "link:/home/leandro-menezes/opensource/actual-repos/tmp3/actual/packages/plugins-core",
+    "@actual-app/plugins-core": "link:/home/leandro-menezes/opensource/actual-repos/frontend-plugins/packages/plugins-core",
     "@module-federation/vite": "^1.2.6",
     "@types/react": "^18.2.0",
     "archiver": "^7.0.1",
