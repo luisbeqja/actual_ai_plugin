@@ -4,6 +4,8 @@ import {
   ActualPluginEntry,
   Button,
   initializePlugin,
+  ModalButtons,
+  ModalHeader,
   View,
 } from "@actual-app/plugins-core";
 import manifest from "./manifest";
@@ -31,7 +33,13 @@ const pluginEntry: ActualPluginEntry = () => {
       context.registerSidebarMenu(
         <Button
           onPress={() => {
-            context.pushModal(<ModalHelloWorld text="my test" />);
+            context.pushModal(<ModalHelloWorld text="my test" />, {
+              name: 'whatever',
+              style: {
+                width: '200px',
+                height: '200px',
+              }
+            });
           }}
           variant="primary"
         >
@@ -53,17 +61,11 @@ type ModalHelloWorldProps = {
 export function ModalHelloWorld({ text }: ModalHelloWorldProps) {
   const [counter, setCounter] = useState(0);
   return (
-    <View>
-      {text}
-      <Button
-        variant="normal"
-        onPress={() => {
-          setCounter((prev) => prev + 1);
-        }}
-      >
-        Click here
-      </Button>
-      {counter}
-    </View>
+    <>
+      <ModalHeader title={text} />
+      <View>
+        Hello world!
+      </View>
+    </>
   );
 }
