@@ -10,12 +10,15 @@ import {
 } from "@actual-app/plugins-core";
 import manifest from "./manifest";
 
+let pluginContext: Parameters<ActualPlugin['activate']>[0];
+
 const pluginEntry: ActualPluginEntry = () => {
   const plugin: ActualPlugin = {
     name: manifest.name,
     version: manifest.version,
     uninstall: () => {},
     activate: (context) => {
+      pluginContext = context;
       context.on("account-add", (data) => {
         console.log("From plugin", data);
       });
@@ -33,13 +36,7 @@ const pluginEntry: ActualPluginEntry = () => {
       context.registerSidebarMenu(
         <Button
           onPress={() => {
-            context.pushModal(<ModalHelloWorld text="my test" />, {
-              name: 'whatever',
-              style: {
-                width: '200px',
-                height: '200px',
-              }
-            });
+            context.pushModal(<ModalHelloWorld text="my test" />);
           }}
           variant="primary"
         >
@@ -65,6 +62,9 @@ export function ModalHelloWorld({ text }: ModalHelloWorldProps) {
       <ModalHeader title={text} />
       <View>
         Hello world!
+        <Button variant="primary" onPress={() => {
+          pluginContext?.popModal();
+        }}>Close this modal</Button>
       </View>
     </>
   );
