@@ -4,12 +4,16 @@ import { federation } from '@module-federation/vite';
 import { fileURLToPath } from 'url';
 import { createWriteStream, rmSync, writeFileSync } from 'fs';
 import archiver from "archiver";
+import react from '@vitejs/plugin-react-swc'
 
 import manifest from "./src/manifest";
 
 export default defineConfig({
   server: {
     origin: 'http://localhost:2000',
+    port: 2000,
+  },
+  preview: {
     port: 2000,
   },
   base: 'http://localhost:2000',
@@ -49,9 +53,10 @@ export default defineConfig({
         },
       },
     }),
+    react(),
     {
       name: "vite-plugin-clean-build",
-      buildStart() {
+      generateBundle() {
         const distPath = path.resolve(__dirname, "build");
         console.log("🧹 Cleaning build folder...");
         rmSync(distPath, { recursive: true, force: true });

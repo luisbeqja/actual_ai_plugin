@@ -6,12 +6,16 @@
   "module": "build/my-library.es.js",
   "types": "build/index.d.ts",
   "scripts": {
-    "build": "vite build"
+    "build": "vite build",
+    "dev": "vite",
+    "preview": "vite build&&vite preview"
   },
   "devDependencies": {
     "@actual-app/plugins-core": "link:/home/leandro-menezes/opensource/actual-repos/frontend-plugins/packages/plugins-core",
     "@module-federation/vite": "^1.2.6",
     "@types/react": "^18.2.0",
+    "@vitejs/plugin-react": "^4.3.4",
+    "@vitejs/plugin-react-swc": "^3.8.1",
     "archiver": "^7.0.1",
     "react": "^18.2.0",
     "typescript": "~5.7.2",

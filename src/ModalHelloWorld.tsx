@@ -1,5 +1,5 @@
-import { ActualPlugin, Button, ModalHeader, View } from '@actual-app/plugins-core';
 import React, { useState } from 'react';
+import { ActualPlugin, Button, ModalHeader, View } from '@actual-app/plugins-core';
 
 type ModalHelloWorldProps = {
     text: string;
@@ -12,7 +12,7 @@ type ModalHelloWorldProps = {
       <>
         <ModalHeader title={text} />
         <View>
-          Hello world!
+          Hello world1!
           <Button variant="primary" onPress={() => {
             context.popModal();
           }}>Close this modal</Button>

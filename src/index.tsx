@@ -21,8 +21,8 @@ const pluginEntry: ActualPluginEntry = () => {
       context.on("categories", (data) => {
         console.log("From plugin", data);
       });
-      context.registerRoute("/test", <View>Simple JSX</View>);
-      context.registerSidebarMenu("before-accounts",
+      context.registerRoute("/test", <View>Simple JSX 2</View>);
+      context.registerMenu("before-accounts",
         <Button
           onPress={() => {
             context.navigate("/custom/test");
@@ -32,7 +32,7 @@ const pluginEntry: ActualPluginEntry = () => {
           Click me
         </Button>
       );
-      context.registerSidebarMenu("after-accounts",
+      context.registerMenu("after-accounts",
         <Button
           onPress={() => {
             context.pushModal(<ModalHelloWorld text="my test" context={pluginContext} />);
