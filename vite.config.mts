@@ -38,6 +38,7 @@ export default defineConfig({
       manifest: true,
       exposes: {
         '.': './src/index.tsx',
+        './ModalHelloWorld': './src/ModalHelloWorld.tsx'
       },
       shared: {
         react: {

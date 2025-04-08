@@ -1,14 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   ActualPlugin,
   ActualPluginEntry,
   Button,
   initializePlugin,
-  ModalButtons,
-  ModalHeader,
   View,
 } from "@actual-app/plugins-core";
 import manifest from "./manifest";
+import { ModalHelloWorld } from "./ModalHelloWorld";
 
 let pluginContext: Parameters<ActualPlugin['activate']>[0];
 
@@ -19,11 +18,11 @@ const pluginEntry: ActualPluginEntry = () => {
     uninstall: () => {},
     activate: (context) => {
       pluginContext = context;
-      context.on("account-add", (data) => {
+      context.on("categories", (data) => {
         console.log("From plugin", data);
       });
       context.registerRoute("/test", <View>Simple JSX</View>);
-      context.registerSidebarMenu(
+      context.registerSidebarMenu("before-accounts",
         <Button
           onPress={() => {
             context.navigate("/custom/test");
@@ -33,10 +32,10 @@ const pluginEntry: ActualPluginEntry = () => {
           Click me
         </Button>
       );
-      context.registerSidebarMenu(
+      context.registerSidebarMenu("after-accounts",
         <Button
           onPress={() => {
-            context.pushModal(<ModalHelloWorld text="my test" />);
+            context.pushModal(<ModalHelloWorld text="my test" context={pluginContext} />);
           }}
           variant="primary"
         >
@@ -50,22 +49,3 @@ const pluginEntry: ActualPluginEntry = () => {
   return initializePlugin(plugin);
 };
 export default pluginEntry;
-
-type ModalHelloWorldProps = {
-  text: string;
-};
-
-export function ModalHelloWorld({ text }: ModalHelloWorldProps) {
-  const [counter, setCounter] = useState(0);
-  return (
-    <>
-      <ModalHeader title={text} />
-      <View>
-        Hello world!
-        <Button variant="primary" onPress={() => {
-          pluginContext?.popModal();
-        }}>Close this modal</Button>
-      </View>
-    </>
-  );
-}
