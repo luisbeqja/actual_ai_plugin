@@ -21,7 +21,7 @@ const pluginEntry: ActualPluginEntry = () => {
       context.on("categories", (data) => {
         console.log("From plugin", data);
       });
-      context.registerRoute("/test", <View>Simple JSX 2</View>);
+      context.registerRoute("/test", <View>Test AI plugin for Actual</View>);
       context.registerMenu("before-accounts",
         <Button
           onPress={() => {
